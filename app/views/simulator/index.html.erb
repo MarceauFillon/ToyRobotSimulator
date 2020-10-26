@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Toy Robot Simulator</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <%= stylesheet_link_tag "index.css" %>
+
+  </head>
+
+
+
+  <body>
+    <header>
+        <h1 class="text-center">Toy Robot Simulator</h1>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+            <div class="robot-commands">
+              <%= form_with scope: :robot, local: true do |form| %>
+
+                <p class="text-center">
+                  <%= form.submit "Place Robot" %>
+                </p>
+                <div class="form-row justify-content-center">
+                  <p class="col-4">
+                    <%= form.label :X, class:"form-label" %><br>
+                    <%= number_field(:robot, :X, class:"form-control", in: 0.0..5.0, step: 1.0) %>
+                  </p>
+      
+                  <p class="col-4">
+                    <%= form.label :Y, class:"form-label" %><br>
+                    <%= number_field(:robot, :Y, class:"form-control", in: 0.0..5.0, step: 1.0) %>
+                  </p>
+
+                  <p class="col-4">
+                    <%= form.label :orientation, class:"form-label" %><br> 
+                    <%= select_tag(:robot_orientation, options_for_select([['North', 1], ['South', 2], ['East', 3], ['West', 4]]), {:class => 'form-control'}) %>
+                  </p>
+                </div>
+
+              <% end %>
+
+              <%= form_with scope: :robot, local: true do |form| %>
+
+                <p class="text-center">
+                  <%= form.submit "Move" %>
+                </p>
+
+              <% end %>
+
+              <h4 class="form-label">
+                Rotate
+              </h4>
+              <div class="rotate-commands d-flex justify-content-center">
+                <%= form_with scope: :robot, html:{class:"rotate-form"} , local: true do |form| %>
+
+                  <p class="text-center">
+                    <%= form.submit "Left" %>
+                  </p>
+
+                <% end %>
+
+                <%= form_with scope: :robot, html:{class:"rotate-form"}, local: true do |form| %>
+
+                  <p class="text-center">
+                    <%= form.submit "Right" %>
+                  </p>
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="col-4 table-board">
+            <% 5.times do |x|  -%>
+              <div class="table-row">
+              <% 5.times do |y| -%>
+                <div class="table-cell cell-<%= x %>-<%= y %>">
+                  <div class="table-cell-content">
+                    <i class="fas fa-space-shuttle fa-rotate-90"></i>
+                  </div>
+                </div>
+              <% end -%>
+              </div>
+            <% end -%>
+          </div>
+          
+
+          <div class="col-4">
+            <div class="robot-log">
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  </body>
+
+  <footer class="py-2">
+    <div class="d-flex justify-content-around">
+      <span class="text-uppercase"> Content created by Marceau Fillon</span>
+    </div>
+  </footer>
+
+</html>
