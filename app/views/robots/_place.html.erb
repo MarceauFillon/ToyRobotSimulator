@@ -1,0 +1,25 @@
+<%= form_with scope: :robot, url: robots_place_path do |form| %>
+    <p class="text-center">
+        <%= form.submit "Place Robot", :disabled => @robot.blank? %>
+    </p>
+    <% if @robot %>
+        <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
+    <% end %>
+    <div class="form-row justify-content-center">
+        <p class="col-4">
+        <%= form.label :x, class:"form-label" %><br>
+        <%= number_field(:robot, :x, class:"form-control", in: 0.0..4.0, step: 1.0, :value => 0, :disabled => @robot.blank?) %>
+        </p>
+
+        <p class="col-4">
+        <%= form.label :y, class:"form-label" %><br>
+        <%= number_field(:robot, :y, class:"form-control", in: 0.0..4.0, step: 1.0, :value => 0, :disabled => @robot.blank?) %>
+        </p>
+
+        <p class="col-4">
+        <%= form.label :orientation, class:"form-label" %><br> 
+        <%= select(:robot, :orientation, options_for_select([['North', 270], ['South', 90], ['East', 0], ['West', 180]]), {:class => 'form-control'}, :disabled => @robot.blank?) %>
+        </p>
+    </div>
+
+<% end %>

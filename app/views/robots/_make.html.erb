@@ -1,0 +1,13 @@
+<% if !@robot %>
+    <%= form_with scope: :robot, url: robots_path do |form| %>
+        <p class="text-center">
+        <%= form.submit "Create Robot" %>
+        </p>
+    <% end %>
+<% else %>
+    <%= form_with scope: :robot, url: robot_path(@robot), method: :delete do |form| %>
+        <p class="text-center">
+        <%= form.submit "Destroy Robot" %>
+        </p>
+    <% end %>
+<% end %>

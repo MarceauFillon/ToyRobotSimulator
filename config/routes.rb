@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'simulator/index'
+  get 'robots/index'
+  post 'robots/place'
 
   resources :robots
   
-  root 'simulator#index'
+  root 'robots#index'
 end

@@ -1,0 +1,7 @@
+$(".robot-handling").html("<%= j (render partial: 'make') %>");
+$(".robot-place").html("<%= j (render partial: 'place') %>");
+
+<% if !@robot %>
+    var old_cell = $(".cell-" + "<%= @old_position[0] %>" + "-" + "<%= @old_position[1] %> > .table-cell-content");
+    old_cell.empty();
+<% end %>

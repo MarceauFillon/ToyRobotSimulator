@@ -1,0 +1,5 @@
+var old_cell = $(".cell-" + "<%= @old_position[0] %>" + "-" + "<%= @old_position[1] %> > .table-cell-content");
+old_cell.empty();
+
+var cell_content = $(".cell-" + "<%= @robot.x %>" + "-" + "<%= @robot.y %> > .table-cell-content");
+cell_content.html("<i class=\"fas fa-space-shuttle fa-rotate-" + "<%= @robot.orientation %>" + "\"></i>");
