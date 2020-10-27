@@ -1,10 +1,12 @@
 // Place all the styles related to the Robots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+body{
+    font-family:Verdana!important;
+}
 .table-row > .table-cell{
     position: relative;
-    width: 19%;
+    width: 5em;
     display:inline-block;
     color:#303030;
     cursor:default;
@@ -24,6 +26,11 @@
     background-color:blue;
 }
 
+.fa-space-shuttle{
+    font-size:3em;
+    color:white;
+}
+
 
 .form-label{
     width:100%;
@@ -35,7 +42,9 @@
     color:green;
     width:75%;
     max-height:23em;
-    overflow-y:scroll;
+    height:23em;
+    overflow-y:auto;
+    font-family: Inconsolata, monospace;
 }
 
 .rotate-form{
@@ -46,4 +55,10 @@
 
 .background-error{
     background-color: red!important;
+}
+
+.center-content{
+    align-items:center;
+    justify-content: center;
+    flex-direction:column;
 }

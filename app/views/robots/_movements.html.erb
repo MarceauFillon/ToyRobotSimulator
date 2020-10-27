@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <%= form_with scope: :robot, url: robots_rotate_path({rotation: "left"}), html:{class:"rotate-form"} do |form| %>
+                <% if @robot %>
+                    <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
+                <% end %>
+
+                <p class="text-center">
+                <%= form.submit "Left", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
+                </p>
+
+            <% end %>
+        </div>
+
+        <div class="col-4">
+            <%= form_with scope: :robot, url: robots_move_path do |form| %>
+                <% if @robot %>
+                    <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
+                <% end %>
+                
+                <p class="text-center">
+                    <%= form.submit "Move" , :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
+                </p>
+            <% end %>
+        </div>
+
+        <div class="col-4">
+            <%= form_with scope: :robot, url: robots_rotate_path({rotation: "right"}), html:{class:"rotate-form"} do |form| %>
+                <% if @robot %>
+                    <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
+                <% end %>
+
+                <p class="text-center">
+                <%= form.submit "Right", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
+                </p>
+
+            <% end %>
+        </div>
+    </div>
+</div>

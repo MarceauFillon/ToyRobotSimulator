@@ -4,5 +4,4 @@ old_cell.empty();
 var cell_content = $(".cell-" + "<%= @robot.x %>" + "-" + "<%= @robot.y %> > .table-cell-content");
 cell_content.html("<i class=\"fas fa-space-shuttle fa-rotate-" + "<%= @robot.orientation %>" + "\"></i>");
 
-$(".robot-move").html("<%= j (render partial: 'move') %>");
-$(".robot-rotate").html("<%= j (render partial: 'rotate') %>");
+$(".robot-movements").html("<%= j (render partial: 'movements') %>");

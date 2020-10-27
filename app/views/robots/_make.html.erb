@@ -7,7 +7,7 @@
 <% else %>
     <%= form_with scope: :robot, url: robot_path(@robot), method: :delete do |form| %>
         <p class="text-center">
-        <%= form.submit "Destroy Robot" %>
+        <%= form.submit "Destroy Robot", :class => "btn btn-outline-danger" %>
         </p>
     <% end %>
 <% end %>
