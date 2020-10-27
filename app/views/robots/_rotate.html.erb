@@ -3,7 +3,10 @@
 </h4>
 
 <div class="rotate-commands d-flex justify-content-center">
-    <%= form_with scope: :robot, html:{class:"rotate-form"} , local: true do |form| %>
+    <%= form_with scope: :robot, url: robots_rotate_path({rotation: "left"}), html:{class:"rotate-form"} do |form| %>
+        <% if @robot %>
+            <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
+        <% end %>
 
         <p class="text-center">
         <%= form.submit "Left", :disabled => !(!@robot.blank? && @robot.on_table) %>
@@ -11,7 +14,10 @@
 
     <% end %>
 
-    <%= form_with scope: :robot, html:{class:"rotate-form"}, local: true do |form| %>
+    <%= form_with scope: :robot, url: robots_rotate_path({rotation: "right"}), html:{class:"rotate-form"} do |form| %>
+        <% if @robot %>
+            <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
+        <% end %>
 
         <p class="text-center">
         <%= form.submit "Right", :disabled => !(!@robot.blank? && @robot.on_table) %>

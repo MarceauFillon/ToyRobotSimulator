@@ -41,18 +41,32 @@ class RobotsController < ApplicationController
         @robot = Robot.find(params[:id])
         @old_position = [@robot.x, @robot.y]
 
-        if !@robot.on_table?
-            return_error
-        end
-
         if !@robot.move
             return_error
-        else
-            @robot.save()
-            respond_to do |format|
-                format.js {render "place"}
-            end 
+            return
         end
+        
+        @robot.save()
+        respond_to do |format|
+            format.js {render "place"}
+        end 
+    end
+
+    def rotate
+        @robot = Robot.find(params[:id])
+        @old_position = [@robot.x, @robot.y]
+
+        direction = params[:rotation]
+
+        if !@robot.rotate(direction)
+            return_error
+            return
+        end
+        
+        @robot.save()
+        respond_to do |format|
+            format.js {render "place"}
+        end 
 
     end
 

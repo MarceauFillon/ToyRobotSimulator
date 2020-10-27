@@ -4,41 +4,68 @@ class Robot < ApplicationRecord
     validates :orientation, presence:true
 
     def move
-        valid = true
+        if !self.on_table
+            return false
+        end
 
         case self.orientation.to_i
         when 0
             if !(self.y + 1).between?(0,4)
-                valid = false
+                return false
             else
                 self.y += 1
             end
 
         when 90
             if !(self.x - 1).between?(0,4)
-                valid = false
+                return false
             else
                 self.x -= 1
             end
 
         when 180
             if !(self.y - 1).between?(0,4)
-                valid = false
+                return false
             else
                 self.y -= 1
             end
 
         when 270
             if !(self.x + 1).between?(0,4)
-                valid = false
+                return false
             else
                 self.x += 1
             end
 
         else
-            valid = false
+            return false
         end
 
-        return valid
+        return true
+    end
+
+    def rotate(direction)
+        if !self.on_table
+            return false
+        end
+
+        new_orientation = 0
+
+        case direction
+        when "left"
+            new_orientation = self.orientation.to_i - 90
+            if new_orientation < 0
+                new_orientation = 270
+            end
+        when "right"
+            new_orientation = self.orientation.to_i + 90
+            if new_orientation > 270
+                new_orientation = 0
+            end
+        else
+            return false
+        end
+
+        self.orientation = new_orientation
     end
 end
