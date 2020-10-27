@@ -1,0 +1,14 @@
+setTimeout(function(){ stopColor() }, 1800);
+var cell_content = $(".cell-" + "<%= @robot.x %>" + "-" + "<%= @robot.y %> > .table-cell-content");
+var myVar = setInterval(blinkError, 300);
+ 
+function blinkError() {
+  cell_content.hasClass("background-error") ? cell_content.removeClass("background-error") : cell_content.addClass("background-error")
+}
+ 
+function stopColor() {
+  clearInterval(myVar);
+  if(cell_content.hasClass("background-error")){
+    cell_content.removeClass("background-error");
+  }
+}

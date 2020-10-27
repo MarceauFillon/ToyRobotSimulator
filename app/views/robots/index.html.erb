@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <%= stylesheet_link_tag "index.css" %>
 
   </head>
 
@@ -28,38 +27,20 @@
               <div class="robot-handling">
                 <%= render "make" %>
               </div>
+
               <div class="robot-place">
                 <%= render "place" %>
               </div>
 
-              <%= form_with scope: :robot, local: true do |form| %>
-
-                <p class="text-center">
-                  <%= form.submit "Move" , :disabled => @robot.blank?%>
-                </p>
-
-              <% end %>
-
-              <h4 class="form-label">
-                Rotate
-              </h4>
-              <div class="rotate-commands d-flex justify-content-center">
-                <%= form_with scope: :robot, html:{class:"rotate-form"} , local: true do |form| %>
-
-                  <p class="text-center">
-                    <%= form.submit "Left", :disabled => @robot.blank?%>
-                  </p>
-
-                <% end %>
-
-                <%= form_with scope: :robot, html:{class:"rotate-form"}, local: true do |form| %>
-
-                  <p class="text-center">
-                    <%= form.submit "Right", :disabled => @robot.blank? %>
-                  </p>
-
-                <% end %>
+              <div class="robot-move">
+                <%= render "move" %>
               </div>
+
+              <div class="robot-rotate">
+                <%= render "rotate" %>
+              </div>
+
+              
             </div>
           </div>
           
@@ -68,9 +49,9 @@
             <% 5.times do |x|  -%>
               <div class="table-row">
               <% 5.times do |y| -%>
-                <div class="table-cell cell-<%= x %>-<%= y %>">
+                <div class="table-cell cell-<%= 4 - x %>-<%= y %>">
                   <div class="table-cell-content">
-                    <% if @robot && @robot.on_table && @robot.x == x && @robot.y == y%>
+                    <% if @robot && @robot.on_table && @robot.x == 4 - x && @robot.y == y%>
                       <i class="fas fa-space-shuttle fa-rotate-<%= @robot.orientation %>"></i>
                     <% end %>
                   </div>

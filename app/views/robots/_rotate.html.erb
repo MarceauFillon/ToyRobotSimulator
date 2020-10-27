@@ -1,0 +1,21 @@
+<h4 class="form-label">
+    Rotate
+</h4>
+
+<div class="rotate-commands d-flex justify-content-center">
+    <%= form_with scope: :robot, html:{class:"rotate-form"} , local: true do |form| %>
+
+        <p class="text-center">
+        <%= form.submit "Left", :disabled => !(!@robot.blank? && @robot.on_table) %>
+        </p>
+
+    <% end %>
+
+    <%= form_with scope: :robot, html:{class:"rotate-form"}, local: true do |form| %>
+
+        <p class="text-center">
+        <%= form.submit "Right", :disabled => !(!@robot.blank? && @robot.on_table) %>
+        </p>
+
+    <% end %>
+</div>

@@ -1,3 +1,51 @@
 // Place all the styles related to the Robots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.table-board{
+    padding-bottom: 3%;
+    padding-top:3%;
+}
+
+.table-row > .table-cell{
+    position: relative;
+    width: 19%;
+    display:inline-block;
+    color:#303030;
+    cursor:default;
+    opacity:1;
+  }
+  
+  .table-row > .table-cell:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+  }
+  
+.table-cell-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:blue;
+}
+
+
+.form-label{
+    width:100%;
+    text-align:center;
+}
+
+.robot-log{
+    background-color:black;
+    color:green;
+}
+
+.rotate-form{
+    display:inline-block;
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.background-error{
+    background-color: red!important;
+}

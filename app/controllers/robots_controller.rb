@@ -37,6 +37,25 @@ class RobotsController < ApplicationController
         end 
     end
 
+    def move
+        @robot = Robot.find(params[:id])
+        @old_position = [@robot.x, @robot.y]
+
+        if !@robot.on_table?
+            return_error
+        end
+
+        if !@robot.move
+            return_error
+        else
+            @robot.save()
+            respond_to do |format|
+                format.js {render "place"}
+            end 
+        end
+
+    end
+
     def destroy
         @robot = Robot.find(params[:id])
         @old_position = [@robot.x, @robot.y]
@@ -52,5 +71,11 @@ class RobotsController < ApplicationController
     private
         def robot_parameters
             params.require(:robot).permit(:x, :y, :orientation)
+        end
+
+        def return_error
+            respond_to do |format|
+                format.js {render "error"}
+            end
         end
 end
