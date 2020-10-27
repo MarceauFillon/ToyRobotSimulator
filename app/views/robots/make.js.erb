@@ -1,7 +1,8 @@
-$(".robot-handling").html("<%= j (render partial: 'make') %>");
+$(".robot-create").html("<%= j (render partial: 'make') %>");
 $(".robot-place").html("<%= j (render partial: 'place') %>");
 $(".robot-move").html("<%= j (render partial: 'move') %>");
 $(".robot-rotate").html("<%= j (render partial: 'rotate') %>");
+$(".robot-report").html("<%= j (render partial: 'report') %>");
 
 <% if !@robot %>
     var old_cell = $(".cell-" + "<%= @old_position[0] %>" + "-" + "<%= @old_position[1] %> > .table-cell-content");

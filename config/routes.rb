@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'robots/place'
   post 'robots/move'
   post 'robots/rotate'
+  post 'robots/report'
 
   resources :robots
   

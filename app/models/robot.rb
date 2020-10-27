@@ -68,4 +68,19 @@ class Robot < ApplicationRecord
 
         self.orientation = new_orientation
     end
+
+    def get_orientation_string()
+        case self.orientation.to_i
+        when 0
+            return "East"
+        when 90
+            return "South"
+        when 180
+            return "West"
+        when 270
+            return "North"
+        else
+            return "Orientation invalid"
+        end
+    end
 end

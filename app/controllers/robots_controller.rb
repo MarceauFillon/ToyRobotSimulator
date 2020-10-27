@@ -24,7 +24,7 @@ class RobotsController < ApplicationController
     def place
         @robot = Robot.find(params[:id])
 
-        if !@robot.on_table?
+        if !@robot.on_table
             @robot.on_table = true
         end
 
@@ -70,6 +70,29 @@ class RobotsController < ApplicationController
 
     end
 
+    def report
+        @report_result = ""
+        id = params[:id]
+        if !id
+            @report_result = "No robot"
+            return_report
+            return 
+        end
+
+        robot = Robot.find(id)
+
+        if !robot.on_table
+            @report_result = "Robot not on table"
+            return_report
+            return
+        end
+
+        @report_result = "%d %d %s" % [robot.x, robot.y, robot.get_orientation_string]
+
+        return_report
+        
+    end
+
     def destroy
         @robot = Robot.find(params[:id])
         @old_position = [@robot.x, @robot.y]
@@ -91,5 +114,11 @@ class RobotsController < ApplicationController
             respond_to do |format|
                 format.js {render "error"}
             end
+        end
+
+        def return_report
+            respond_to do |format|
+                format.js {render "report"}
+            end 
         end
 end

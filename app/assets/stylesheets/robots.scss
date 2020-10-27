@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.table-board{
-    padding-bottom: 3%;
-    padding-top:3%;
-}
-
 .table-row > .table-cell{
     position: relative;
     width: 19%;
@@ -38,6 +33,9 @@
 .robot-log{
     background-color:black;
     color:green;
+    width:75%;
+    max-height:23em;
+    overflow-y:scroll;
 }
 
 .rotate-form{
