@@ -1,8 +1,13 @@
+// Reload the creation/destruction view to update the creation/destruction button
 $(".robot-create").html("<%= j (render partial: 'make') %>");
+// Reload the place command view to enable it if the robot is created and disable it if the robot is destroyed.
 $(".robot-place").html("<%= j (render partial: 'place') %>");
+// Reload the movement commands view to disable them if the robot is destroyed.
 $(".robot-movements").html("<%= j (render partial: 'movements') %>");
+// Reload the report view to update the robot ID
 $(".robot-report").html("<%= j (render partial: 'report') %>");
 
+// If the robot is destroyed, the old position has to be cleared.
 <% if !@robot %>
     var old_cell = $(".cell-" + "<%= @old_position[0] %>" + "-" + "<%= @old_position[1] %> > .table-cell-content");
     old_cell.empty();

@@ -1,3 +1,10 @@
+<%
+=begin%>
+  Form that will not reload the page on submit but be considered as an AJAX request.
+  When reloaded, the view will use the robot id in the requet parameters.
+  If no robot is created, the log will output 'NO ROBOT CREATED'
+<%
+=end%>
 <%= form_with scope: :robot, url: robots_report_path do |form| %>
     <% if @robot %>
         <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>

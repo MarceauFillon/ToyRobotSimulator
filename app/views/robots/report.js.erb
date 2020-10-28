@@ -1,2 +1,5 @@
-$(".robot-log").append("<p>" + "<%= @report_result %>" + "</p>")
-$(".robot-log").scrollTop($(".robot-log")[0].scrollHeight);
+// Add new output in the scrolling log.
+$(".robot-log").append("<p>" + "<%= @report_result %>" + "</p>") 
+
+// Get to the bottom of the log (if scroll activated) at every new output
+$(".robot-log").scrollTop($(".robot-log")[0].scrollHeight); 

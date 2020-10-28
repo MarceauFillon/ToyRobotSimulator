@@ -1,7 +1,10 @@
+// Thanks to the old_position array returned by controller actions, we can empty the last position of the robot.
 var old_cell = $(".cell-" + "<%= @old_position[0] %>" + "-" + "<%= @old_position[1] %> > .table-cell-content");
 old_cell.empty();
 
+// Using the robot object, we can display the robot on its new position
 var cell_content = $(".cell-" + "<%= @robot.x %>" + "-" + "<%= @robot.y %> > .table-cell-content");
 cell_content.html("<i class=\"fas fa-space-shuttle fa-rotate-" + "<%= @robot.orientation %>" + "\"></i>");
 
+// As the robot is now placed on the table, the movements command can be used
 $(".robot-movements").html("<%= j (render partial: 'movements') %>");

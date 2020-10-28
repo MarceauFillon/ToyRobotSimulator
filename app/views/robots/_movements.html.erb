@@ -1,3 +1,10 @@
+<%
+=begin%>
+  Forms that will not reload the page on submit but be considered as an AJAX request.
+  When reloaded, the view will use the robot id in the requet parameters.
+  Each of the commands and input is disabled if no robot has been created and if the robot has not been placed.
+<%
+=end%>
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
@@ -9,7 +16,6 @@
                 <p class="text-center">
                 <%= form.submit "Left", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
                 </p>
-
             <% end %>
         </div>
 

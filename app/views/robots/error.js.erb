@@ -1,11 +1,16 @@
+// Set a limit to stop the blinking process (after 1800ms)
 setTimeout(function(){ stopColor() }, 1800);
 var cell_content = $(".cell-" + "<%= @robot.x %>" + "-" + "<%= @robot.y %> > .table-cell-content");
+
+// Set the blinking interval (every 300ms)
 var myVar = setInterval(blinkError, 300);
  
+// Every 300ms, the background will change from red to blue or blue to red.
 function blinkError() {
   cell_content.hasClass("background-error") ? cell_content.removeClass("background-error") : cell_content.addClass("background-error")
 }
- 
+
+// Function to stop the blinking. 
 function stopColor() {
   clearInterval(myVar);
   if(cell_content.hasClass("background-error")){

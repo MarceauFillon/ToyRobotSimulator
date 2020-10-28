@@ -1,13 +1,22 @@
+<%
+=begin%>
+  Forms that will not reload the page on submit but be considered as an AJAX request.
+  When reloaded, the view will use the robot objects to specify which object to destruct.
+  When reloaded, if no robot has been created, the action button will create a robot, else destroy it.
+<%
+=end%>
+
 <% if !@robot %>
     <%= form_with scope: :robot, url: robots_path do |form| %>
         <p class="text-center">
-        <%= form.submit "Create Robot" %>
+            <%= form.submit "Create Robot" %>
         </p>
     <% end %>
+
 <% else %>
     <%= form_with scope: :robot, url: robot_path(@robot), method: :delete do |form| %>
         <p class="text-center">
-        <%= form.submit "Destroy Robot", :class => "btn btn-outline-danger" %>
+            <%= form.submit "Destroy Robot", :class => "btn btn-outline-danger" %>
         </p>
     <% end %>
 <% end %>

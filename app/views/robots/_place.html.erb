@@ -1,25 +1,40 @@
+<%
+=begin%>
+  Form that will not reload the page on submit but be considered as an AJAX request.
+  When reloaded, the view will use the robot id in the requet parameters.
+  Each of the commands and input is disabled if no robot has been created.
+  The coordinates input are preventing the user from entering an invalid coordinate.
+<%
+=end%>
+
 <%= form_with scope: :robot, url: robots_place_path do |form| %>
 
     <% if @robot %>
         <%= hidden_field_tag("id", @robot.id, :id => "robot_id") %>
     <% end %>
+
     <div class="form-row justify-content-center">
         <div class="col-3">
         </div>
+
         <div class="col-2">
             <%= form.label :x, class:"form-label" %>
         </div>
+
         <div class="col-2">
             <%= form.label :y, class:"form-label" %>
         </div>
+
         <div class="col-5">
             <%= form.label :orientation, class:"form-label" %>
         </div>
     </div>
+
     <div class="form-row justify-content-center">
         <div class="text-center col-3">
             <%= form.submit "Place", :disabled => @robot.blank?, :class => "btn btn-outline-dark" %>
         </div>
+        
         <div class="col-2">
             <%= number_field(:robot, :x, class:"form-control", in: 0.0..4.0, step: 1.0, :value => 0, :disabled => @robot.blank?) %>
         </div>
