@@ -9,7 +9,7 @@
 <% if !@robot %>
     <%= form_with scope: :robot, url: robots_path do |form| %>
         <p class="text-center">
-            <%= form.submit "Create Robot" %>
+            <%= form.submit "Create Robot", :class => "btn btn-light" %>
         </p>
     <% end %>
 

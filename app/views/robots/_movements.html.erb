@@ -14,7 +14,7 @@
                 <% end %>
 
                 <p class="text-center">
-                <%= form.submit "Left", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
+                <%= form.submit "Left", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-light" %>
                 </p>
             <% end %>
         </div>
@@ -26,7 +26,7 @@
                 <% end %>
                 
                 <p class="text-center">
-                    <%= form.submit "Move" , :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
+                    <%= form.submit "Move" , :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-light" %>
                 </p>
             <% end %>
         </div>
@@ -38,7 +38,7 @@
                 <% end %>
 
                 <p class="text-center">
-                <%= form.submit "Right", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-outline-dark" %>
+                <%= form.submit "Right", :disabled => !(!@robot.blank? && @robot.on_table), :class => "btn btn-light" %>
                 </p>
 
             <% end %>

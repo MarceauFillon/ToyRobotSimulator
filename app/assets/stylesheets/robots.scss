@@ -1,16 +1,44 @@
 // Place all the styles related to the Robots controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+//General
 body{
     font-family:Verdana!important;
+    background-color:#e7e1e8!important;
 }
+
+.btn-light:hover{
+    color: #fff!important;
+    background-color: #343a40!important;
+    border-color: #343a40!important;
+}
+
+.center-content{
+    align-items:center;
+    justify-content: center;
+    flex-direction:column;
+}
+
+.fa-linkedin-in{
+    margin-right:5px;
+}
+
+.invisible-link, .invisible-link:hover, .invisible-link:active, .invisible-link:visited, .invisible-link:link{
+    text-decoration:none;
+    color:black;
+}
+
+////////////////////////
+
+//Table
 .table-row > .table-cell{
     position: relative;
     width: 5em;
     display:inline-block;
     color:#303030;
     cursor:default;
-    opacity:1;
+    opacity:0.7;
   }
   
   .table-row > .table-cell:after {
@@ -23,7 +51,7 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color:blue;
+    background-color:#68bd91;
 }
 
 .fa-space-shuttle{
@@ -31,20 +59,16 @@ body{
     color:white;
 }
 
+.background-error{
+    background-color: red!important;
+}
 
+////////////////////////
+
+//Commands
 .form-label{
     width:100%;
     text-align:center;
-}
-
-.robot-log{
-    background-color:black;
-    color:green;
-    width:75%;
-    max-height:23em;
-    height:23em;
-    overflow-y:auto;
-    font-family: Inconsolata, monospace;
 }
 
 .rotate-form{
@@ -53,12 +77,18 @@ body{
     margin-left:10px;
 }
 
-.background-error{
-    background-color: red!important;
+////////////////////////
+
+//Log
+.robot-log{
+    background-color:black;
+    color:#e7e1e8;
+    width:75%;
+    max-height:23em;
+    height:23em;
+    overflow-y:auto;
+    font-family: Inconsolata, monospace;
+    opacity:0.7;
 }
 
-.center-content{
-    align-items:center;
-    justify-content: center;
-    flex-direction:column;
-}
+////////////////////////
