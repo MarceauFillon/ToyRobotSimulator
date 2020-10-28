@@ -101,7 +101,7 @@ class RobotsControllerTestMove < ActionDispatch::IntegrationTest
   end
 
   test "impossible move" do
-    robot = Robot.new(x:4, y:0, orientation:270, on_table:true)
+    robot = Robot.new(x:4, y:4, orientation:270, on_table:true)
     robot.save
 
     post robots_move_path(params: {id:robot.id}, format: :js)
@@ -110,7 +110,7 @@ class RobotsControllerTestMove < ActionDispatch::IntegrationTest
     assert_equal "text/javascript", @response.media_type
     assert_match "blinkError()", @response.body
     assert_equal 4, Robot.first.x
-    assert_equal 0, Robot.first.y
+    assert_equal 4, Robot.first.y
   end
 
   test "move object not on table" do
@@ -127,7 +127,7 @@ class RobotsControllerTestMove < ActionDispatch::IntegrationTest
   end
 
   test "possible move" do
-    robot = Robot.new(x:4, y:0, orientation:90, on_table:true)
+    robot = Robot.new(x:4, y:0, orientation:180, on_table:true)
     robot.save
 
     post robots_move_path(params: {id:robot.id}, format: :js)

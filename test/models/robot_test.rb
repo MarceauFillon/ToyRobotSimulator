@@ -98,27 +98,27 @@ class RobotTestMove < ActiveSupport::TestCase
 
   test "should only move east" do
     robot1 = Robot.new(x:0, y:0, orientation:0, on_table:true)
-    robot2 = Robot.new(x:0, y:1, orientation:0, on_table:true)
+    robot2 = Robot.new(x:1, y:0, orientation:0, on_table:true)
     robot1.move
     assert_equal robot2.attributes, robot1.attributes, "Robot did not move only east"
   end
 
   test "should only move north" do
     robot1 = Robot.new(x:0, y:0, orientation:270, on_table:true)
-    robot2 = Robot.new(x:1, y:0, orientation:270, on_table:true)
+    robot2 = Robot.new(x:0, y:1, orientation:270, on_table:true)
     robot1.move
     assert_equal robot2.attributes, robot1.attributes, "Robot did not move only north"
   end
 
   test "should only move west" do
-    robot1 = Robot.new(x:0, y:1, orientation:180, on_table:true)
+    robot1 = Robot.new(x:1, y:0, orientation:180, on_table:true)
     robot2 = Robot.new(x:0, y:0, orientation:180, on_table:true)
     robot1.move
     assert_equal robot2.attributes, robot1.attributes, "Robot did not move only west"
   end
 
   test "should only move south" do
-    robot1 = Robot.new(x:1, y:0, orientation:90, on_table:true)
+    robot1 = Robot.new(x:0, y:1, orientation:90, on_table:true)
     robot2 = Robot.new(x:0, y:0, orientation:90, on_table:true)
     robot1.move
     assert_equal robot2.attributes, robot1.attributes, "Robot did not move only south"

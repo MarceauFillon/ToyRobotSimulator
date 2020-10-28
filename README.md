@@ -1,7 +1,8 @@
-# README
+# Toy Robot Simulator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the solution to answer Curve Tomorrow's challenge given on Monday 26/10/2020. 
+As a test for software practices and ability to learn, I set the deadline to Wednesday 28/10/2020 11:59PM.
+I chose the Ruby On Rails technology for the learning exercise.
 
 ## Requirements
 This application requires you to have the following prerequisites.
@@ -49,4 +50,11 @@ To run the test suite, run the following command in the workspace folder
 ```bash
 rake TESTOPTS="-v" test 
 ```
+
+## Future improvements
+* Make the number of cells generic and ready to use in all the code
+* Build system test suite (started the implementation but failing because Selenium does not wait for Ajax requests)
+* Outputs in the log for wrong commands
+* Persistent log
+* Robot based on session
 
