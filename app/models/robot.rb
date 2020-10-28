@@ -90,7 +90,9 @@ class Robot < ApplicationRecord
 
     private 
         def check_uniqueness
-            return !Robot.all().any?   
+            if !self.id && Robot.all().any?
+                throw(:abort)
+            end   
         end
 
         def check_presence_on_table

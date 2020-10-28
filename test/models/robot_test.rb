@@ -47,9 +47,9 @@ class RobotTestSave < ActiveSupport::TestCase
   end
 
   test "should not save two robots" do
-    robot = Robot.new(x:0, y:0, on_table:false)
-    robot.save
-    robot2 = Robot.new(x:0, y:0, on_table:false)
+    robot = Robot.new(x:0, y:0, orientation:0, on_table:false)
+    assert robot.save, "Saving a robot failed"
+    robot2 = Robot.new(x:0, y:0, orientation:0, on_table:false)
     assert_not robot2.save, "Saved a robot while a robot already existed"
   end
 
