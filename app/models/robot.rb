@@ -21,31 +21,31 @@ class Robot < ApplicationRecord
         # If the new coordinate is outside of the table, return false
         case self.orientation
         when 0
-            if !(self.y + 1).between?(0,4)
+            if !(self.x + 1).between?(0,4)
                 return false
             else
-                self.y += 1
+                self.x += 1
             end
 
         when 90
-            if !(self.x - 1).between?(0,4)
-                return false
-            else
-                self.x -= 1
-            end
-
-        when 180
             if !(self.y - 1).between?(0,4)
                 return false
             else
                 self.y -= 1
             end
 
-        when 270
-            if !(self.x + 1).between?(0,4)
+        when 180
+            if !(self.x - 1).between?(0,4)
                 return false
             else
-                self.x += 1
+                self.x -= 1
+            end
+
+        when 270
+            if !(self.y + 1).between?(0,4)
+                return false
+            else
+                self.y += 1
             end
 
         else

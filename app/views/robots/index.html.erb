@@ -74,13 +74,13 @@
 <%
 =end%>
           <div class="col-4 table-board text-center">
-            <% 5.times do |x|  -%>
+            <% 5.times do |y| -%>
               <div class="table-row">
-              <% 5.times do |y| -%>
-                <div class="table-cell cell-<%= 4 - x %>-<%= y %>">
+              <% 5.times do |x| -%>
+                <div class="table-cell cell-<%= x %>-<%= 4 - y %>">
 
                   <div class="table-cell-content d-flex center-content">
-                    <% if @robot && @robot.on_table && @robot.x == 4 - x && @robot.y == y%>
+                    <% if @robot && @robot.on_table && @robot.x == x && @robot.y == 4 - y%>
                       <i class="fas fa-space-shuttle fa-rotate-<%= @robot.orientation %>"></i>
                     <% end %>
                   </div>
