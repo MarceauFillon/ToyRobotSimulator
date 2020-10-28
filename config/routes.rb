@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'robots/move'
   post 'robots/rotate'
   post 'robots/report'
+  delete 'robots/destroy'
 
   resources :robots
   

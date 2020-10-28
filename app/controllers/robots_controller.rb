@@ -17,7 +17,7 @@ class RobotsController < ApplicationController
                 format.js {render "make"}
             end
         else
-            format.js {render js: alert("The robot is already created!")}
+            render js: "alert('The robot is already created!')"
         end
     end
 
@@ -47,16 +47,14 @@ class RobotsController < ApplicationController
         end
         
         @robot.save()
-        respond_to do |format|
-            format.js {render "place"}
-        end 
+        return_place
     end
 
     def rotate
         @robot = Robot.find(params[:id])
         @old_position = [@robot.x, @robot.y]
 
-        direction = params[:rotation]
+        direction = params[:direction]
 
         if !@robot.rotate(direction)
             return_error
@@ -64,9 +62,7 @@ class RobotsController < ApplicationController
         end
         
         @robot.save()
-        respond_to do |format|
-            format.js {render "place"}
-        end 
+        return_place
 
     end
 
@@ -119,6 +115,12 @@ class RobotsController < ApplicationController
         def return_report
             respond_to do |format|
                 format.js {render "report"}
+            end 
+        end
+
+        def return_place
+            respond_to do |format|
+                format.js {render "place"}
             end 
         end
 end
