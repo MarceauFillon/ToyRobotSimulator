@@ -29,7 +29,7 @@ class RobotsController < ApplicationController
         end
 
         @old_position = [@robot.x, @robot.y]
-
+        
         respond_to do |format|
             if @robot.update(robot_parameters)
                 format.js

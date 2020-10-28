@@ -1,14 +1,18 @@
 class Robot < ApplicationRecord
-    validates :x, presence:true
-    validates :y, presence:true
-    validates :orientation, presence:true
+    before_update :check_presence_on_table
+    before_save :check_uniqueness
+
+    validates :x, inclusion:{ :in => 0..4}
+    validates :y, inclusion:{ :in => 0..4}
+    validates :orientation, inclusion:{ :in => (0..270).step(90)}
+    validates :on_table, inclusion:{ :in => [true, false]}
 
     def move
         if !self.on_table
             return false
         end
 
-        case self.orientation.to_i
+        case self.orientation
         when 0
             if !(self.y + 1).between?(0,4)
                 return false
@@ -53,12 +57,12 @@ class Robot < ApplicationRecord
 
         case direction
         when "left"
-            new_orientation = self.orientation.to_i - 90
+            new_orientation = self.orientation - 90
             if new_orientation < 0
                 new_orientation = 270
             end
         when "right"
-            new_orientation = self.orientation.to_i + 90
+            new_orientation = self.orientation + 90
             if new_orientation > 270
                 new_orientation = 0
             end
@@ -70,7 +74,7 @@ class Robot < ApplicationRecord
     end
 
     def get_orientation_string()
-        case self.orientation.to_i
+        case self.orientation
         when 0
             return "East"
         when 90
@@ -80,7 +84,18 @@ class Robot < ApplicationRecord
         when 270
             return "North"
         else
-            return "Orientation invalid"
+            return "Invalid"
         end
     end
+
+    private 
+        def check_uniqueness
+            return !Robot.all().any?   
+        end
+
+        def check_presence_on_table
+            if !self.on_table
+                throw(:abort)
+            end
+        end
 end

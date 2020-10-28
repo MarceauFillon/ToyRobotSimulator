@@ -12,7 +12,29 @@
         "program": "${workspaceRoot}/bin/rails",
         "args": [
         "server"
-    ]
+      ]
+      },
+      {
+        "cwd": "${workspaceRoot}",
+        "name": "Minitest - Run all",
+        "type": "Ruby",
+        "request": "launch",
+        "program": "${workspaceRoot}/bin/rails",
+        "args": [
+          "test",
+          "robot_test.rb"
+        ]
+      },
+      {
+        "cwd": "${workspaceRoot}",
+        "name": "Minitest - Run at cursor position",
+        "type": "Ruby",
+        "request": "launch",
+        "program": "${workspaceRoot}/bin/rails",
+        "args": [
+          "test",
+          "${file}:${lineNumber}"
+        ]
       }
     ]
   }
